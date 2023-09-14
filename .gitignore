@@ -30,3 +30,29 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio files
+*.aps
+*.bsc
+*.ncb
+*.suo
+*.ilk
+*.recipe
+*.user
+*.idb
+*.opt
+*.pdb
+*.plg
+*.vcproj.*
+*.vcxproj.*
+*.vcxproj
+*.vcproj
+*.vsidx
+*.tlog
+*.log
+*.vs
+
+# Sqlite
+*.sqlite3
+*.sqlite
+*.db
