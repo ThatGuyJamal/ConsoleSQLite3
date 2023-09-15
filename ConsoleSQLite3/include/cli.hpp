@@ -12,7 +12,6 @@
 /// <summary>
 /// Runs the command line interface for the program.
 /// </summary>
-/// <param name="db">A pointer to the SQLite database</param>
 void runCLI();
 
 void printFormattedCommandList();

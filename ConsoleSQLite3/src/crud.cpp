@@ -96,6 +96,7 @@ bool insertData(std::string tableName, std::string colums, std::string values)
 {
 	sqlite3* db = openDb();
 
+	// todo - uncomment this when parsing for colums and values is implemented
 	//std::string sql = "INSERT INTO " + tableName + " (" + colums + ") VALUES (" + values + ");";
 
 	std::string sql = "INSERT INTO people (name, age) VALUES ('bob', 25)";
@@ -166,7 +167,7 @@ bool deleteTableData(std::string tableName)
 	return true;
 };
 
-// Function to emit an error message and exit the program
+// Function to emit an error message and close the database
 void handleCRUDError(sqlite3* db, const std::string errorMsg) {
 	std::cerr << "Error: " << errorMsg << std::endl;
 	if (db)
