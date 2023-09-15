@@ -7,6 +7,6 @@
 // SQLite3 Library
 #include <sqlite3.h>
 
-// Custom SQL functions
+// Program Headers
 #include "crud.hpp"
 #include "cli.hpp"

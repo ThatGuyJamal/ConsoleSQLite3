@@ -13,7 +13,7 @@
 /// </summary>
 /// <param name="db">A pointer to the SQLite database</param>
 /// <param name="databaseName">The name of the .sqlite file.</param>
-int openDb(sqlite3* db, std::string databaseName);
+sqlite3* openDb();
 
 /// <summary>
 /// Closes an SQLite3 database connection.
@@ -24,54 +24,47 @@ void closeDb(sqlite3* db);
 /// <summary>
 /// Creates a new table in the database.
 /// </summary>
-/// <param name="db">A pointer to the SQLite database</param>
 /// <param name="tableName">The name of the table to create</param>
 /// <param name="columns">A string of the colum data for the table</param>
-bool createNewTable(sqlite3* db, std::string tableName, std::string columns);
+bool createNewTable(const std::string& tableName, const std::string& columns);
 
 /// <summary>
 /// Drops a table from the database.
 /// </summary>
-/// <param name="db">A pointer to the SQLite database</param>
 /// <param name="tableName">The name of the table to drop</param>
-bool dropTable(sqlite3* db, std::string tableName);
+bool dropTable(const std::string& tableName);
 
 /// <summary>
 /// List all the current tables in the db.
 /// </summary>
-void listTables(sqlite3* db);
+std::vector<std::string> listTables();
 
 /// <summary>
 ///	Inserst data into a table.
 /// </summary>
 /// <param name="db">A pointer to the SQLite database</param>
 /// <param name="tableName">The name of the table to modify</param>
-/// <param name="columns">The name of the colum to insert into</param>
+///	<param name="colums">The colum to add the value to</param>
 /// <param name="values">The value to add to the colum</param>
-bool insertData(sqlite3* db, std::string tableName, std::string columns, std::string values);
+bool insertData(std::string tableName, std::string colums, std::string values);
 
 /// <summary>
 /// Select data from a table.
 /// </summary>
 /// <param name="db">A pointer to the SQLite database</param>
 /// <param name="tableName">The name of the table to read</param>
-/// <param name="columns"></param>
-void selectData(sqlite3* db, std::string tableName, std::string columns);
-
-/// <summary>
-///  Update data in a table.
-/// </summary>
-/// <param name="db"></param>
-/// <param name="tableName">The name of the table to modify</param>
-/// <param name="columns">The name of the colum to modify</param>
-/// <param name="values">The value to update in the colum</param>
-/// <param name="where">Filters for the colum</param>
-void updateData(sqlite3* db, std::string tableName, std::string columns, std::string values, std::string where);
+std::vector<std::vector<std::string>> selectData(const std::string& tableName, const std::string& columns = "*");
 
 /// <summary>
 /// Delete data from a table.
 /// </summary>
 /// <param name="db">A pointer to the SQLite database</param>
 /// <param name="tableName">The name of the table to modify</param>
-/// <param name="where">The filters for the delete</param>
-void deleteData(sqlite3* db, std::string tableName, std::string where);
+bool deleteTableData(std::string tableName);
+
+/// <summary>
+/// Handles errors from the CRUD functions.
+/// </summary>
+/// <param name="db">A pointer to the SQLite database</param>
+/// <param name="errorMsg">The error message to display</param>
+void handleCRUDError(sqlite3* db, const std::string errorMsg);
