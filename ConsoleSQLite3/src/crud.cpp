@@ -100,8 +100,14 @@ bool insertData(std::string tableName, std::string colums, std::string values)
 	//std::string sql = "INSERT INTO " + tableName + " (" + colums + ") VALUES (" + values + ");";
 
 	std::string sql = "INSERT INTO people (name, age) VALUES ('bob', 25)";
+	std::string sql2 = "INSERT INTO people (name, age) VALUES ('bob2', 18)";
+	std::string sql3 = "INSERT INTO people (name, age) VALUES ('bob3', 19)";
 
 	int rc = sqlite3_exec(db, sql.c_str(), 0, 0, 0);
+
+	// todo - remove later
+	sqlite3_exec(db, sql2.c_str(), 0, 0, 0);
+	sqlite3_exec(db, sql3.c_str(), 0, 0, 0);
 
 	if (rc != SQLITE_OK)
 	{
